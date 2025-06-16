@@ -5,13 +5,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/sort-string', (req, res) => {
   try {
-    const { input } = req.body;
+    const { data } = req.body;
 
-    if (!input || typeof input !== 'string') {
-      return res.status(400).json({ error: 'Please provide a valid string in "input"' });
+    if (!data || typeof data !== 'string') {
+      return res.status(400).json({ error: 'Please provide a valid string in "data"' });
     }
 
-    const characters = input.split('').sort();
+    const characters = data.split('').sort();
     return res.status(200).json({ word: characters });
   } catch (error) {
     console.error('Unexpected Server Error:', error.message);
